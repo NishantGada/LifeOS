@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from database import init_db
-from routers import todos, weather
+from routers import todos, weather, news
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -22,6 +22,7 @@ app.add_middleware(
 
 app.include_router(todos.router)
 app.include_router(weather.router)
+app.include_router(news.router)
 
 @app.get("/health")
 def health():
