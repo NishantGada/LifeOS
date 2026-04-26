@@ -161,6 +161,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+__pycache__/
+*.pyc
+*.pyo
+dashboard.db
+__pycache__
 
 # Spyder project settings
 .spyderproject
