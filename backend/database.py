@@ -21,4 +21,24 @@ async def init_db():
                 created_at  TEXT    DEFAULT (datetime('now'))
             )
         """)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS goals (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                title       TEXT    NOT NULL,
+                description TEXT    DEFAULT '',
+                category    TEXT    DEFAULT 'Personal',
+                target_date TEXT    DEFAULT NULL,
+                progress    INTEGER DEFAULT 0,
+                created_at  TEXT    DEFAULT (datetime('now'))
+            )
+        """)
+        await db.execute("""
+            CREATE TABLE IF NOT EXISTS milestones (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                goal_id     INTEGER NOT NULL,
+                title       TEXT    NOT NULL,
+                completed   INTEGER DEFAULT 0,
+                FOREIGN KEY (goal_id) REFERENCES goals(id) ON DELETE CASCADE
+            )
+        """)
         await db.commit()
