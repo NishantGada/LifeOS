@@ -2,9 +2,11 @@ import os
 import json
 from groq import Groq
 from dotenv import load_dotenv
+from config import get_settings
 
 load_dotenv()
-client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+settings = get_settings()
+client   = Groq(api_key=settings.groq_api_key)
 
 def call_llm(prompt: str) -> str:
     response = client.chat.completions.create(

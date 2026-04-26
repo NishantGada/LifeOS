@@ -1,13 +1,10 @@
 import httpx
-import os
 import time
-from dotenv import load_dotenv
+from config import get_settings
 
-load_dotenv()
-
-GNEWS_KEY = os.getenv("GNEWS_API_KEY")
+settings  = get_settings()
 GNEWS_URL = "https://gnews.io/api/v4/top-headlines"
-CACHE_TTL = 60 * 30  # 30 minutes
+CACHE_TTL = 60 * 30
 
 _raw_cache:       dict = {"data": None, "timestamp": 0}
 _processed_cache: dict = {"data": None, "timestamp": 0}
@@ -19,7 +16,7 @@ async def fetch_top_news(force: bool = False) -> list[dict]:
 
     async with httpx.AsyncClient() as client:
         res = await client.get(GNEWS_URL, params={
-            "token":   GNEWS_KEY,
+            "token":   settings.gnews_api_key,
             "lang":    "en",
             "country": "us",
             "max":     10,

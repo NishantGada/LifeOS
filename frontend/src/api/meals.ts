@@ -1,6 +1,7 @@
 import axios from "axios"
+import { config } from "../config"
 
-const BASE = "http://localhost:8000"
+const BASE = config.apiBase
 
 export interface Meal {
   name:                 string
