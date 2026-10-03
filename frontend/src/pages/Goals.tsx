@@ -19,7 +19,7 @@ const CATEGORY_STYLE: Record<string, string> = {
 
 function ProgressBar({ value }: { value: number }) {
   return (
-    <div className="w-full h-1.5 bg-gray-100 dark:bg-navy-700 rounded-full overflow-hidden">
+    <div className="w-full h-1.5 bg-gray-100 dark:bg-navy-600 rounded-full overflow-hidden">
       <div
         className="h-full bg-teal-500 rounded-full transition-all duration-300"
         style={{ width: `${value}%` }}
@@ -101,15 +101,15 @@ function GoalCard({
 
   const inputClass = `
     w-full px-3 py-2 text-sm rounded-lg
-    bg-gray-50 dark:bg-navy-700
+    bg-gray-50 dark:bg-navy-800
     border border-gray-200 dark:border-navy-600
-    text-gray-900 dark:text-gray-100
-    placeholder-gray-400 dark:placeholder-gray-600
+    text-gray-900 dark:text-mist-100
+    placeholder-gray-400 dark:placeholder-mist-600
     focus:outline-none focus:ring-2 focus:ring-teal-500/30
   `
 
   return (
-    <div className="bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-600 rounded-2xl overflow-hidden">
+    <div className="bg-white dark:bg-navy-700 border border-gray-200 dark:border-navy-600 rounded-2xl overflow-hidden">
       {/* Header */}
       <div className="p-5">
         {editing ? (
@@ -160,7 +160,7 @@ function GoalCard({
                     target_date: goal.target_date ?? "",
                   })
                 }}
-                className="flex-1 py-2 rounded-lg text-sm font-medium border border-gray-200 dark:border-navy-600 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-navy-700 transition-colors"
+                className="flex-1 py-2 rounded-lg text-sm font-medium border border-gray-200 dark:border-navy-600 text-gray-600 dark:text-mist-400 hover:bg-gray-50 dark:hover:bg-navy-600 transition-colors"
               >
                 Cancel
               </button>
@@ -179,32 +179,32 @@ function GoalCard({
                     {goal.category}
                   </span>
                   {goal.target_date && (
-                    <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-gray-500">
+                    <span className="flex items-center gap-1 text-xs text-gray-400 dark:text-mist-500">
                       <Calendar size={11} />
                       {goal.target_date}
                     </span>
                   )}
                 </div>
 
-                <h2 className="text-base font-semibold text-gray-900 dark:text-gray-100 mb-1">
+                <h2 className="text-base font-semibold text-gray-900 dark:text-mist-100 mb-1">
                   {goal.title}
                 </h2>
 
                 {goal.description && (
-                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                  <p className="text-sm text-gray-500 dark:text-mist-400 mb-3">
                     {goal.description}
                   </p>
                 )}
 
                 <div className="flex items-center gap-3">
                   <ProgressBar value={progress} />
-                  <span className="text-xs font-medium text-gray-500 dark:text-gray-400 w-10 text-right flex-shrink-0">
+                  <span className="text-xs font-medium text-gray-500 dark:text-mist-400 w-10 text-right flex-shrink-0">
                     {progress}%
                   </span>
                 </div>
 
                 {goal.milestones.length > 0 && (
-                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
+                  <p className="text-xs text-gray-400 dark:text-mist-500 mt-2">
                     {completedMs}/{goal.milestones.length} milestones done
                   </p>
                 )}
@@ -213,7 +213,7 @@ function GoalCard({
               <div className="flex items-center gap-2 flex-shrink-0">
                 <button
                   onClick={e => { e.stopPropagation(); setEditing(true); setExpanded(true) }}
-                  className="text-gray-300 dark:text-gray-600 hover:text-teal-500 transition-colors"
+                  className="text-gray-300 dark:text-mist-600 hover:text-teal-500 transition-colors"
                   title="Edit goal"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -223,7 +223,7 @@ function GoalCard({
                 </button>
                 <button
                   onClick={e => { e.stopPropagation(); onDelete(goal.id) }}
-                  className="text-gray-300 dark:text-gray-600 hover:text-red-400 transition-colors"
+                  className="text-gray-300 dark:text-mist-600 hover:text-red-400 transition-colors"
                 >
                   <Trash2 size={15} />
                 </button>
@@ -239,11 +239,11 @@ function GoalCard({
 
       {/* Expanded content — unchanged from before */}
       {expanded && !editing && (
-        <div className="px-5 pb-5 border-t border-gray-100 dark:border-navy-700 space-y-5 pt-4">
+        <div className="px-5 pb-5 border-t border-gray-100 dark:border-navy-800 space-y-5 pt-4">
 
           {/* Progress slider */}
           <div>
-            <label className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+            <label className="text-xs font-medium text-gray-400 dark:text-mist-500 uppercase tracking-wider">
               Progress
             </label>
             <div className="flex items-center gap-3 mt-2">
@@ -253,9 +253,9 @@ function GoalCard({
                 onChange={e => setProgress(Number(e.target.value))}
                 onMouseUp={e => handleProgressChange(Number((e.target as HTMLInputElement).value))}
                 onTouchEnd={e => handleProgressChange(Number((e.target as HTMLInputElement).value))}
-                className="flex-1 accent-teal-500"
+                className="flex-1 accent-teal-500 dark:accent-teal-300"
               />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 w-10 text-right">
+              <span className="text-sm font-medium text-gray-700 dark:text-mist-300 w-10 text-right">
                 {progress}%
               </span>
             </div>
@@ -263,7 +263,7 @@ function GoalCard({
 
           {/* Milestones */}
           <div>
-            <label className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+            <label className="text-xs font-medium text-gray-400 dark:text-mist-500 uppercase tracking-wider">
               Milestones
             </label>
             <div className="mt-2 space-y-2">
@@ -271,19 +271,19 @@ function GoalCard({
                 <div key={ms.id} className="flex items-center gap-2 group">
                   <button
                     onClick={() => handleToggleMilestone(ms)}
-                    className="text-gray-300 dark:text-gray-600 hover:text-teal-500 transition-colors flex-shrink-0"
+                    className="text-gray-300 dark:text-mist-600 hover:text-teal-500 transition-colors flex-shrink-0"
                   >
                     {ms.completed
                       ? <CheckCircle2 size={16} className="text-teal-500" />
                       : <Circle size={16} />
                     }
                   </button>
-                  <span className={`text-sm flex-1 ${ms.completed ? "line-through text-gray-400 dark:text-gray-600" : "text-gray-700 dark:text-gray-300"}`}>
+                  <span className={`text-sm flex-1 ${ms.completed ? "line-through text-gray-400 dark:text-mist-600" : "text-gray-700 dark:text-mist-300"}`}>
                     {ms.title}
                   </span>
                   <button
                     onClick={() => handleDeleteMilestone(ms.id)}
-                    className="opacity-0 group-hover:opacity-100 text-gray-300 dark:text-gray-600 hover:text-red-400 transition-all"
+                    className="opacity-0 group-hover:opacity-100 text-gray-300 dark:text-mist-600 hover:text-red-400 transition-all"
                   >
                     <Trash2 size={13} />
                   </button>
@@ -298,10 +298,10 @@ function GoalCard({
                 placeholder="Add a milestone..."
                 className="
                   flex-1 px-3 py-1.5 text-sm rounded-lg
-                  bg-gray-50 dark:bg-navy-700
+                  bg-gray-50 dark:bg-navy-800
                   border border-gray-200 dark:border-navy-600
-                  text-gray-900 dark:text-gray-100
-                  placeholder-gray-400 dark:placeholder-gray-600
+                  text-gray-900 dark:text-mist-100
+                  placeholder-gray-400 dark:placeholder-mist-600
                   focus:outline-none focus:ring-2 focus:ring-teal-500/30
                 "
               />
@@ -332,7 +332,7 @@ function GoalCard({
                 <p className="text-xs font-medium text-teal-600 dark:text-teal-400 uppercase tracking-wider mb-2">
                   This week's plan
                 </p>
-                <pre className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-wrap font-sans leading-relaxed">
+                <pre className="text-sm text-gray-700 dark:text-mist-300 whitespace-pre-wrap font-sans leading-relaxed">
                   {plan}
                 </pre>
               </div>
@@ -390,10 +390,10 @@ export default function Goals() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+        <h1 className="text-2xl font-semibold text-gray-900 dark:text-mist-100 mb-1">
           Goals
         </h1>
-        <p className="text-sm text-gray-400 dark:text-gray-500">
+        <p className="text-sm text-gray-400 dark:text-mist-500">
           {goals.length} goal{goals.length !== 1 ? "s" : ""} · track progress · AI action plans
         </p>
       </div>
@@ -404,7 +404,7 @@ export default function Goals() {
         className="
           w-full mb-4 px-4 py-2.5 rounded-xl text-sm font-medium
           border border-dashed border-gray-300 dark:border-navy-500
-          text-gray-500 dark:text-gray-400
+          text-gray-500 dark:text-mist-400
           hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400
           transition-colors flex items-center justify-center gap-2
         "
@@ -417,17 +417,17 @@ export default function Goals() {
 
       {/* Form */}
       {showForm && (
-        <div className="mb-6 p-4 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-800 space-y-3">
+        <div className="mb-6 p-4 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-700 space-y-3">
           <input
             value={form.title}
             onChange={e => setForm(p => ({ ...p, title: e.target.value }))}
             placeholder="Goal title"
             className="
               w-full px-3 py-2 text-sm rounded-lg
-              bg-gray-50 dark:bg-navy-700
+              bg-gray-50 dark:bg-navy-800
               border border-gray-200 dark:border-navy-600
-              text-gray-900 dark:text-gray-100
-              placeholder-gray-400 dark:placeholder-gray-600
+              text-gray-900 dark:text-mist-100
+              placeholder-gray-400 dark:placeholder-mist-600
               focus:outline-none focus:ring-2 focus:ring-teal-500/30
             "
           />
@@ -437,10 +437,10 @@ export default function Goals() {
             placeholder="Description (optional)"
             className="
               w-full px-3 py-2 text-sm rounded-lg
-              bg-gray-50 dark:bg-navy-700
+              bg-gray-50 dark:bg-navy-800
               border border-gray-200 dark:border-navy-600
-              text-gray-900 dark:text-gray-100
-              placeholder-gray-400 dark:placeholder-gray-600
+              text-gray-900 dark:text-mist-100
+              placeholder-gray-400 dark:placeholder-mist-600
               focus:outline-none focus:ring-2 focus:ring-teal-500/30
             "
           />
@@ -450,9 +450,9 @@ export default function Goals() {
               onChange={e => setForm(p => ({ ...p, category: e.target.value }))}
               className="
                 flex-1 px-3 py-2 text-sm rounded-lg
-                bg-gray-50 dark:bg-navy-700
+                bg-gray-50 dark:bg-navy-800
                 border border-gray-200 dark:border-navy-600
-                text-gray-900 dark:text-gray-100
+                text-gray-900 dark:text-mist-100
                 focus:outline-none focus:ring-2 focus:ring-teal-500/30
               "
             >
@@ -464,9 +464,9 @@ export default function Goals() {
               onChange={e => setForm(p => ({ ...p, target_date: e.target.value }))}
               className="
                 flex-1 px-3 py-2 text-sm rounded-lg
-                bg-gray-50 dark:bg-navy-700
+                bg-gray-50 dark:bg-navy-800
                 border border-gray-200 dark:border-navy-600
-                text-gray-900 dark:text-gray-100
+                text-gray-900 dark:text-mist-100
                 focus:outline-none focus:ring-2 focus:ring-teal-500/30
               "
             />
@@ -505,7 +505,7 @@ export default function Goals() {
           ))}
 
           {goals.length === 0 && (
-            <div className="text-center py-16 text-gray-400 dark:text-gray-600">
+            <div className="text-center py-16 text-gray-400 dark:text-mist-600">
               <Target size={32} className="mx-auto mb-3 opacity-30" />
               <p className="text-sm">No goals yet. Add one above.</p>
             </div>

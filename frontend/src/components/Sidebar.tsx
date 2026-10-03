@@ -24,12 +24,12 @@ export default function Sidebar({ isDark, toggle }: Props) {
     <aside className="
       fixed top-0 left-0 h-screen w-56 z-10
       flex flex-col
-      bg-white dark:bg-navy-800
+      bg-white dark:bg-navy-700
       border-r border-gray-200 dark:border-navy-600
     ">
       {/* Logo */}
       <div className="px-5 py-6 border-b border-gray-200 dark:border-navy-600">
-        <span className="text-lg font-semibold text-gray-900 dark:text-gray-100 tracking-tight">
+        <span className="text-lg font-semibold text-gray-900 dark:text-mist-100 tracking-tight">
           LifeOS
         </span>
         <span className="text-lg font-light text-teal-500">.</span>
@@ -47,7 +47,7 @@ export default function Sidebar({ isDark, toggle }: Props) {
               transition-colors duration-150
               ${isActive
                 ? "bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400"
-                : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-navy-600 hover:text-gray-900 dark:hover:text-gray-100"
+                : "text-gray-600 dark:text-mist-400 hover:bg-gray-100 dark:hover:bg-navy-600 hover:text-gray-900 dark:hover:text-mist-100"
               }
             `}
           >
@@ -63,9 +63,9 @@ export default function Sidebar({ isDark, toggle }: Props) {
           onClick={toggle}
           className="
             w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm
-            text-gray-500 dark:text-gray-400
+            text-gray-500 dark:text-mist-400
             hover:bg-gray-100 dark:hover:bg-navy-600
-            hover:text-gray-800 dark:hover:text-gray-200
+            hover:text-gray-800 dark:hover:text-mist-200
             transition-colors duration-150
           "
         >

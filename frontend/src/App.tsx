@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50 dark:bg-navy-700 transition-colors duration-200">
+      <div className="min-h-screen bg-gray-50 dark:bg-navy-800 transition-colors duration-200">
         <Sidebar isDark={isDark} toggle={toggle} />
         <main className="ml-56 min-h-screen p-8">
           <Routes>

@@ -35,11 +35,11 @@ export class ErrorBoundary extends Component<Props, State> {
           size={32}
           className="text-amber-400 dark:text-amber-500 mb-4"
         />
-        <h2 className="text-base font-medium text-gray-900 dark:text-gray-100 mb-2">
+        <h2 className="text-base font-medium text-gray-900 dark:text-mist-100 mb-2">
           Something went wrong
           {this.props.pageName ? ` on the ${this.props.pageName} page` : ""}
         </h2>
-        <p className="text-sm text-gray-400 dark:text-gray-500 mb-6 max-w-sm">
+        <p className="text-sm text-gray-400 dark:text-mist-500 mb-6 max-w-sm">
           {this.state.message || "An unexpected error occurred."}
         </p>
         <button

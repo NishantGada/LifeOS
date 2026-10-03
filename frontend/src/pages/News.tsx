@@ -43,10 +43,10 @@ export default function News() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-mist-100 mb-1">
             News
           </h1>
-          <p className="text-sm text-gray-400 dark:text-gray-500">
+          <p className="text-sm text-gray-400 dark:text-mist-500">
             Top world stories · AI summarized
           </p>
         </div>
@@ -63,7 +63,7 @@ export default function News() {
       {loading && (
         <div className="flex flex-col items-center justify-center py-20 gap-3">
           <Loader2 size={24} className="animate-spin text-teal-500" />
-          <p className="text-sm text-gray-400 dark:text-gray-500">
+          <p className="text-sm text-gray-400 dark:text-mist-500">
             Fetching and summarizing articles...
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function News() {
 
       {error && !loading && (
         <div className="text-center py-20">
-          <p className="text-gray-500 dark:text-gray-400 mb-4">{error}</p>
+          <p className="text-gray-500 dark:text-mist-400 mb-4">{error}</p>
           <button onClick={load} className="text-teal-500 text-sm underline">Try again</button>
         </div>
       )}
@@ -85,8 +85,8 @@ export default function News() {
 
           {articles.length === 0 && (
             <div className="text-center py-20">
-              <Newspaper size={32} className="mx-auto mb-3 text-gray-300 dark:text-gray-600" />
-              <p className="text-sm text-gray-400 dark:text-gray-500">No articles found.</p>
+              <Newspaper size={32} className="mx-auto mb-3 text-gray-300 dark:text-mist-600" />
+              <p className="text-sm text-gray-400 dark:text-mist-500">No articles found.</p>
             </div>
           )}
         </div>
@@ -101,7 +101,7 @@ function ArticleCard({ article, index }: { article: Article; index: number }) {
       href={article.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="block p-5 rounded-2xl border bg-white dark:bg-navy-800 border-gray-200 dark:border-navy-600 hover:border-teal-300 dark:hover:border-teal-700 hover:shadow-sm transition-all duration-150 group"
+      className="block p-5 rounded-2xl border bg-white dark:bg-navy-700 border-gray-200 dark:border-navy-600 hover:border-teal-300 dark:hover:border-teal-700 hover:shadow-sm transition-all duration-150 group"
     >
       <div className="flex gap-4">
         <span className="text-2xl font-light text-gray-200 dark:text-navy-600 select-none flex-shrink-0 w-6 pt-0.5">
@@ -113,17 +113,17 @@ function ArticleCard({ article, index }: { article: Article; index: number }) {
             <span className="text-xs font-medium text-teal-600 dark:text-teal-400">
               {article.source}
             </span>
-            <span className="text-gray-300 dark:text-gray-600 text-xs">·</span>
-            <span className="text-xs text-gray-400 dark:text-gray-500">
+            <span className="text-gray-300 dark:text-mist-600 text-xs">·</span>
+            <span className="text-xs text-gray-400 dark:text-mist-500">
               {article.published}
             </span>
           </div>
 
-          <h2 className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2 leading-snug group-hover:text-teal-700 dark:group-hover:text-teal-300 transition-colors">
+          <h2 className="text-sm font-medium text-gray-900 dark:text-mist-100 mb-2 leading-snug group-hover:text-teal-700 dark:group-hover:text-teal-300 transition-colors">
             {article.title}
           </h2>
 
-          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-500 dark:text-mist-400 leading-relaxed">
             {article.summary}
           </p>
         </div>
@@ -139,7 +139,7 @@ function ArticleCard({ article, index }: { article: Article; index: number }) {
 
         <ExternalLink
           size={14}
-          className="flex-shrink-0 text-gray-300 dark:text-gray-600 group-hover:text-teal-500 transition-colors mt-0.5"
+          className="flex-shrink-0 text-gray-300 dark:text-mist-600 group-hover:text-teal-500 transition-colors mt-0.5"
         />
       </div>
     </a>

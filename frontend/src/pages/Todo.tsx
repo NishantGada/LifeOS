@@ -10,7 +10,7 @@ const PRIORITIES = ["low", "medium", "high"] as const
 const CATEGORIES = ["Work", "Personal", "Learning", "Health"] as const
 
 const priorityStyle: Record<string, string> = {
-  low: "bg-gray-100 text-gray-500 dark:bg-navy-600 dark:text-gray-400",
+  low: "bg-gray-100 text-gray-500 dark:bg-navy-600 dark:text-mist-400",
   medium: "bg-teal-50 text-teal-700 dark:bg-teal-900/30 dark:text-teal-400",
   high: "bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400",
 }
@@ -84,16 +84,16 @@ export default function Todo() {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+        <h1 className="text-2xl font-semibold text-gray-900 dark:text-mist-100 mb-1">
           Tasks
         </h1>
-        <p className="text-sm text-gray-400 dark:text-gray-500">
+        <p className="text-sm text-gray-400 dark:text-mist-500">
           {active.length} remaining · {completed.length} done
         </p>
       </div>
 
       {/* AI input */}
-      <div className="mb-6 p-4 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-800">
+      <div className="mb-6 p-4 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-700">
         <div className="flex items-center gap-2 mb-2">
           <Sparkles size={14} className="text-teal-500" />
           <span className="text-xs font-medium text-teal-600 dark:text-teal-400 uppercase tracking-wide">
@@ -108,10 +108,10 @@ export default function Todo() {
             placeholder='e.g. "prep for Goodbill interview this Friday, urgent"'
             className="
               flex-1 px-3 py-2 text-sm rounded-lg
-              bg-gray-50 dark:bg-navy-700
+              bg-gray-50 dark:bg-navy-800
               border border-gray-200 dark:border-navy-600
-              text-gray-900 dark:text-gray-100
-              placeholder-gray-400 dark:placeholder-gray-600
+              text-gray-900 dark:text-mist-100
+              placeholder-gray-400 dark:placeholder-mist-600
               focus:outline-none focus:ring-2 focus:ring-teal-500/30
             "
           />
@@ -136,7 +136,7 @@ export default function Todo() {
         className="
           w-full mb-4 px-4 py-2.5 rounded-xl text-sm font-medium
           border border-dashed border-gray-300 dark:border-navy-500
-          text-gray-500 dark:text-gray-400
+          text-gray-500 dark:text-mist-400
           hover:border-teal-400 hover:text-teal-600 dark:hover:text-teal-400
           transition-colors flex items-center justify-center gap-2
         "
@@ -149,7 +149,7 @@ export default function Todo() {
 
       {/* Manual form */}
       {showForm && (
-        <div className="mb-6 p-4 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-800 space-y-3">
+        <div className="mb-6 p-4 rounded-xl border border-gray-200 dark:border-navy-600 bg-white dark:bg-navy-700 space-y-3">
           <input
             value={form.title}
             onChange={e => setForm(p => ({ ...p, title: e.target.value }))}
@@ -157,10 +157,10 @@ export default function Todo() {
             placeholder="Task title"
             className="
               w-full px-3 py-2 text-sm rounded-lg
-              bg-gray-50 dark:bg-navy-700
+              bg-gray-50 dark:bg-navy-800
               border border-gray-200 dark:border-navy-600
-              text-gray-900 dark:text-gray-100
-              placeholder-gray-400 dark:placeholder-gray-600
+              text-gray-900 dark:text-mist-100
+              placeholder-gray-400 dark:placeholder-mist-600
               focus:outline-none focus:ring-2 focus:ring-teal-500/30
             "
           />
@@ -170,10 +170,10 @@ export default function Todo() {
             placeholder="Notes (optional)"
             className="
               w-full px-3 py-2 text-sm rounded-lg
-              bg-gray-50 dark:bg-navy-700
+              bg-gray-50 dark:bg-navy-800
               border border-gray-200 dark:border-navy-600
-              text-gray-900 dark:text-gray-100
-              placeholder-gray-400 dark:placeholder-gray-600
+              text-gray-900 dark:text-mist-100
+              placeholder-gray-400 dark:placeholder-mist-600
               focus:outline-none focus:ring-2 focus:ring-teal-500/30
             "
           />
@@ -184,9 +184,9 @@ export default function Todo() {
               onChange={e => setForm(p => ({ ...p, priority: e.target.value }))}
               className="
                 flex-1 px-3 py-2 text-sm rounded-lg
-                bg-gray-50 dark:bg-navy-700
+                bg-gray-50 dark:bg-navy-800
                 border border-gray-200 dark:border-navy-600
-                text-gray-900 dark:text-gray-100
+                text-gray-900 dark:text-mist-100
                 focus:outline-none focus:ring-2 focus:ring-teal-500/30
               "
             >
@@ -200,9 +200,9 @@ export default function Todo() {
               onChange={e => setForm(p => ({ ...p, category: e.target.value }))}
               className="
                 flex-1 px-3 py-2 text-sm rounded-lg
-                bg-gray-50 dark:bg-navy-700
+                bg-gray-50 dark:bg-navy-800
                 border border-gray-200 dark:border-navy-600
-                text-gray-900 dark:text-gray-100
+                text-gray-900 dark:text-mist-100
                 focus:outline-none focus:ring-2 focus:ring-teal-500/30
               "
             >
@@ -215,9 +215,9 @@ export default function Todo() {
               onChange={e => setForm(p => ({ ...p, due_date: e.target.value || null }))}
               className="
                 flex-1 px-3 py-2 text-sm rounded-lg
-                bg-gray-50 dark:bg-navy-700
+                bg-gray-50 dark:bg-navy-800
                 border border-gray-200 dark:border-navy-600
-                text-gray-900 dark:text-gray-100
+                text-gray-900 dark:text-mist-100
                 focus:outline-none focus:ring-2 focus:ring-teal-500/30
               "
             />
@@ -255,7 +255,7 @@ export default function Todo() {
           {completed.length > 0 && (
             <>
               <div className="pt-4 pb-2">
-                <span className="text-xs font-medium text-gray-400 dark:text-gray-600 uppercase tracking-wider">
+                <span className="text-xs font-medium text-gray-400 dark:text-mist-600 uppercase tracking-wider">
                   Completed
                 </span>
               </div>
@@ -271,7 +271,7 @@ export default function Todo() {
           )}
 
           {todos.length === 0 && (
-            <div className="text-center py-16 text-gray-400 dark:text-gray-600">
+            <div className="text-center py-16 text-gray-400 dark:text-mist-600">
               <CheckCircle2 size={32} className="mx-auto mb-3 opacity-30" />
               <p className="text-sm">No tasks yet. Add one above.</p>
             </div>
@@ -294,9 +294,9 @@ function TodoItem({
   return (
     <div className={`
       group px-4 py-3 rounded-xl border transition-all duration-150
-      bg-white dark:bg-navy-800
+      bg-white dark:bg-navy-700
       ${todo.completed
-        ? "border-gray-100 dark:border-navy-700 opacity-50"
+        ? "border-gray-100 dark:border-navy-800 opacity-50"
         : "border-gray-200 dark:border-navy-600"
       }
     `}>
@@ -304,7 +304,7 @@ function TodoItem({
         {/* Checkbox */}
         <button
           onClick={() => onToggle(todo)}
-          className="mt-0.5 text-gray-300 dark:text-gray-600 hover:text-teal-500 transition-colors flex-shrink-0"
+          className="mt-0.5 text-gray-300 dark:text-mist-600 hover:text-teal-500 transition-colors flex-shrink-0"
         >
           {todo.completed
             ? <CheckCircle2 size={18} className="text-teal-500" />
@@ -316,7 +316,7 @@ function TodoItem({
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <span className={`
-              text-sm font-medium text-gray-900 dark:text-gray-100
+              text-sm font-medium text-gray-900 dark:text-mist-100
               ${todo.completed ? "line-through" : ""}
             `}>
               {todo.title}
@@ -328,13 +328,13 @@ function TodoItem({
               {todo.category}
             </span>
             {todo.due_date && (
-              <span className="text-xs text-gray-400 dark:text-gray-500">
+              <span className="text-xs text-gray-400 dark:text-mist-500">
                 due {todo.due_date}
               </span>
             )}
           </div>
           {todo.notes && (
-            <p className="text-xs text-gray-400 dark:text-gray-500 mt-0.5 truncate">
+            <p className="text-xs text-gray-400 dark:text-mist-500 mt-0.5 truncate">
               {todo.notes}
             </p>
           )}
@@ -345,7 +345,7 @@ function TodoItem({
           onClick={() => onDelete(todo.id)}
           className="
             opacity-0 group-hover:opacity-100
-            text-gray-300 dark:text-gray-600
+            text-gray-300 dark:text-mist-600
             hover:text-red-400 transition-all flex-shrink-0
           "
         >

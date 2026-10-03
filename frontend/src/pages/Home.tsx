@@ -63,7 +63,7 @@ export default function Home() {
       {/* Greeting phrase */}
       <h1 className="
         text-4xl font-light tracking-tight
-        text-gray-900 dark:text-gray-100
+        text-gray-900 dark:text-mist-100
         mb-2
       ">
         {greeting.phrase}
@@ -84,7 +84,7 @@ export default function Home() {
       {/* Live time */}
       <div className="
         text-5xl font-light tabular-nums
-        text-gray-800 dark:text-gray-200
+        text-gray-800 dark:text-mist-200
         mb-3
       ">
         {formatTime(now)}
@@ -92,7 +92,7 @@ export default function Home() {
 
       {/* Date */}
       <div className="
-        text-sm text-gray-400 dark:text-gray-500
+        text-sm text-gray-400 dark:text-mist-500
         font-normal tracking-wide
       ">
         {formatDate(now)}

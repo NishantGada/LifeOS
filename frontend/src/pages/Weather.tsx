@@ -6,12 +6,12 @@ import { MapPin, Wind, Droplets, Sun, Search, Loader2, RefreshCw } from "lucide-
 
 function StatCard({ label, value, icon }: { label: string; value: string; icon: React.ReactNode }) {
   return (
-    <div className="bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-600 rounded-xl p-4">
+    <div className="bg-white dark:bg-navy-700 border border-gray-200 dark:border-navy-600 rounded-xl p-4">
       <div className="flex items-center gap-2 mb-1">
-        <span className="text-gray-400 dark:text-gray-500">{icon}</span>
-        <span className="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-wide">{label}</span>
+        <span className="text-gray-400 dark:text-mist-500">{icon}</span>
+        <span className="text-xs text-gray-400 dark:text-mist-500 uppercase tracking-wide">{label}</span>
       </div>
-      <p className="text-xl font-medium text-gray-900 dark:text-gray-100">{value}</p>
+      <p className="text-xl font-medium text-gray-900 dark:text-mist-100">{value}</p>
     </div>
   )
 }
@@ -85,7 +85,7 @@ export default function Weather() {
 
   if (error) return (
     <div className="max-w-lg mx-auto text-center py-20">
-      <p className="text-gray-500 dark:text-gray-400 mb-4">{error}</p>
+      <p className="text-gray-500 dark:text-mist-400 mb-4">{error}</p>
       <button onClick={() => loadByCity("Boston")} className="text-teal-500 text-sm underline">
         Try Boston instead
       </button>
@@ -100,10 +100,10 @@ export default function Weather() {
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-1">
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-mist-100 mb-1">
             Weather
           </h1>
-          <div className="flex items-center gap-1 text-sm text-gray-400 dark:text-gray-500">
+          <div className="flex items-center gap-1 text-sm text-gray-400 dark:text-mist-500">
             <MapPin size={13} />
             <span>{data.city}</span>
           </div>
@@ -125,10 +125,10 @@ export default function Weather() {
           placeholder="Search city..."
           className="
             flex-1 px-3 py-2 text-sm rounded-lg
-            bg-white dark:bg-navy-800
+            bg-white dark:bg-navy-700
             border border-gray-200 dark:border-navy-600
-            text-gray-900 dark:text-gray-100
-            placeholder-gray-400 dark:placeholder-gray-600
+            text-gray-900 dark:text-mist-100
+            placeholder-gray-400 dark:placeholder-mist-600
             focus:outline-none focus:ring-2 focus:ring-teal-500/30
           "
         />
@@ -146,12 +146,12 @@ export default function Weather() {
       </div>
 
       {/* Hero — current weather */}
-      <div className="bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-600 rounded-2xl p-8 mb-6 text-center">
+      <div className="bg-white dark:bg-navy-700 border border-gray-200 dark:border-navy-600 rounded-2xl p-8 mb-6 text-center">
         <div className="text-7xl mb-4">{data.current.emoji}</div>
-        <div className="text-6xl font-light text-gray-900 dark:text-gray-100 mb-2">
+        <div className="text-6xl font-light text-gray-900 dark:text-mist-100 mb-2">
           {Math.round(data.current.temp)}°C
         </div>
-        <div className="text-sm text-gray-500 dark:text-gray-400 capitalize mb-6">
+        <div className="text-sm text-gray-500 dark:text-mist-400 capitalize mb-6">
           {data.current.description} · feels like {Math.round(data.current.feels_like)}°C
         </div>
         {/* AI summary */}
@@ -167,9 +167,9 @@ export default function Weather() {
         <StatCard label="UV Index" value={`${data.current.uv_index}`} icon={<Sun size={14} />} />
       </div>
 
-      <div className="bg-white dark:bg-navy-800 border border-gray-200 dark:border-navy-600 rounded-2xl p-5">
+      <div className="bg-white dark:bg-navy-700 border border-gray-200 dark:border-navy-600 rounded-2xl p-5">
         <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider">
+          <h2 className="text-xs font-medium text-gray-400 dark:text-mist-500 uppercase tracking-wider">
             {showAllForecast ? "16-day forecast" : "5-day forecast"}
           </h2>
           <button
@@ -182,17 +182,17 @@ export default function Weather() {
         <div className="space-y-3">
           {(showAllForecast ? data.forecast : data.forecast.slice(0, 5)).map(day => (
             <div key={day.date} className="flex items-center gap-4">
-              <span className="text-sm text-gray-500 dark:text-gray-400 w-10">
+              <span className="text-sm text-gray-500 dark:text-mist-400 w-10">
                 {getDayName(day.date)}
               </span>
               <span className="text-lg w-8">{day.emoji}</span>
-              <span className="text-xs text-gray-400 dark:text-gray-500 flex-1 capitalize">
+              <span className="text-xs text-gray-400 dark:text-mist-500 flex-1 capitalize">
                 {day.description}
               </span>
               <span className="text-xs text-blue-400 dark:text-blue-500 w-10 text-right">
                 {day.rain_pct}%
               </span>
-              <span className="text-sm text-gray-900 dark:text-gray-100 w-24 text-right">
+              <span className="text-sm text-gray-900 dark:text-mist-100 w-24 text-right">
                 {Math.round(day.max)}° / {Math.round(day.min)}°
               </span>
             </div>
