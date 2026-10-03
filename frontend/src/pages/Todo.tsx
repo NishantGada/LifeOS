@@ -3,7 +3,7 @@ import { todosApi } from "../api/todos"
 import type { Todo, TodoCreate } from "../api/todos"
 import {
   Plus, Trash2, CheckCircle2, Circle,
-  Sparkles, Loader2, ChevronDown, ChevronUp
+  Sparkles, Loader2, ChevronUp
 } from "lucide-react"
 
 const PRIORITIES = ["low", "medium", "high"] as const
@@ -289,8 +289,6 @@ function TodoItem({
   onToggle: (t: Todo) => void
   onDelete: (id: number) => void
 }) {
-  const [expanded, setExpanded] = useState(false)
-
   return (
     <div className={`
       group px-4 py-3 rounded-xl border transition-all duration-150
