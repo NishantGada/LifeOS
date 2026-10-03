@@ -39,3 +39,8 @@ app.include_router(goals.router)
 @app.get("/health")
 def health():
     return {"status": "ok", "environment": settings.environment}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", port=8010, reload=True)

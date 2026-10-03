@@ -4,7 +4,7 @@ from functools import lru_cache
 class Settings(BaseSettings):
     groq_api_key:     str
     gnews_api_key:    str
-    allowed_origins:  str = "http://localhost:5173"
+    allowed_origins:  str = "http://localhost:5200"
     environment:      str = "development"
 
     class Config:
