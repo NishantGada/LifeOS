@@ -168,9 +168,18 @@ function GoalCard({
           </div>
         ) : (
           /* ── View mode ── */
-          <button
+          // A div, not a <button>: it contains the edit/delete buttons, and buttons can't nest
+          <div
+            role="button"
+            tabIndex={0}
+            aria-expanded={expanded}
             onClick={() => setExpanded(p => !p)}
-            className="w-full text-left"
+            onKeyDown={e => {
+              // Ignore keys bubbling up from the inner buttons
+              if (e.target !== e.currentTarget) return
+              if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setExpanded(p => !p) }
+            }}
+            className="w-full text-left cursor-pointer rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/30"
           >
             <div className="flex items-start justify-between gap-3">
               <div className="flex-1 min-w-0">
@@ -233,7 +242,7 @@ function GoalCard({
                 }
               </div>
             </div>
-          </button>
+          </div>
         )}
       </div>
 
