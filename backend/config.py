@@ -4,6 +4,7 @@ from functools import lru_cache
 class Settings(BaseSettings):
     groq_api_key:     str
     gnews_api_key:    str
+    groq_model:       str = "openai/gpt-oss-20b"
     allowed_origins:  str = "http://localhost:5200"
     environment:      str = "development"
 

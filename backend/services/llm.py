@@ -10,7 +10,7 @@ client   = Groq(api_key=settings.groq_api_key)
 
 def call_llm(prompt: str) -> str:
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model=settings.groq_model,
         messages=[{"role": "user", "content": prompt}],
         temperature=0.3,
     )
