@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import date, timedelta
 from groq import Groq
 from dotenv import load_dotenv
 from config import get_settings
@@ -17,6 +18,9 @@ def call_llm(prompt: str) -> str:
     return response.choices[0].message.content.strip()
 
 async def parse_todo_with_ai(text: str) -> dict:
+    # Small models can't do weekday arithmetic reliably, so hand them the next 7 dates to look up
+    today    = date.today()
+    upcoming = ", ".join(f"{d:%A} {d}" for d in (today + timedelta(days=i) for i in range(1, 8)))
     prompt = f"""
 Extract task details from this natural language input and return ONLY a valid JSON object.
 No markdown, no backticks, no explanation — raw JSON only.
@@ -35,7 +39,8 @@ Return this exact shape:
 Rules:
 - priority: infer from urgency words (urgent/asap/today = high, soon/this week = medium, else low)
 - category: infer from context (interview/job/code = Work, gym/diet = Health, study/learn = Learning, else Personal)
-- due_date: resolve relative dates like "friday" or "next week" to actual dates based on today being {__import__('datetime').date.today()}
+- due_date: resolve relative dates like "friday" or "next week" to actual dates. Today is {today:%A} {today}.
+  The next 7 days are: {upcoming}. A bare weekday or "this <weekday>" means its date in that list.
 - title: clean and concise, remove filler words
 """
     raw = call_llm(prompt)
