@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import axios from "axios"
 import { weatherApi } from "../api/weather"
 import type { WeatherData } from "../api/weather"
 import { MapPin, Wind, Droplets, Sun, Search, Loader2, RefreshCw } from "lucide-react"
@@ -58,8 +59,11 @@ export default function Weather() {
     try {
       const res = await weatherApi.getByCity(city)
       setData(res.data)
-    } catch {
-      setError(`City "${city}" not found.`)
+    } catch (e) {
+      // Only a 404 means the city lookup failed; anything else is a server problem
+      setError(axios.isAxiosError(e) && e.response?.status === 404
+        ? `City "${city}" not found.`
+        : "Failed to load weather data.")
     } finally {
       setLoading(false)
       setSearching(false)
